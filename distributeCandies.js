@@ -1,51 +1,26 @@
-// const distributeCandies = (array) => {
-// 	let sortedArray = array.sort(sortedNumber);
-// 	let count = 1;
-// 	for(let i = 0; i < sortedArray.length && count < sortedArray.length/2; i++){
-// 		if(sortedArray[i] < sortedArray[i+1]) {
-// 			count++;
-// 		}
-// 	}
-// 	return count;
-// }
+// Given an integer array with even length, where different numbers in this array represent different kinds of candies. Each number means one candy of the corresponding kind. You need to distribute these candies equally in number to brother and sister. Return the maximum number of kinds of candies the sister could gain.
+// Example 1:
+// Input: candies = [1,1,2,2,3,3]
+// Output: 3
+// Explanation:
+// There are three different kinds of candies (1, 2 and 3), and two candies for each kind.
+// Optimal distribution: The sister has candies [1,2,3] and the brother has candies [1,2,3], too. 
+// The sister has three different kinds of candies. 
 
-// const sortedNumber = (a,b) => {
-// 	return a-b;	
-// }
-
-// console.log(distributeCandies([1,1,2,2,3,3]));
-// console.log(distributeCandies([1,1,2,3]));
-var binaryGap = function(N) {
-    let binary = convertToBinary(N);
-    let maxGap = 0;
-    let gap = 0;
-    for(let i = 0; i < binary.length; i++) {
-    	if(binary[i] === '1') {
-    		for(let j = i+1; j < binary.length; j++){
-    			if(binary[j] === '0') {
-    				gap++;
-    			} else if (binary[j] === '1') {
-    				if(gap > maxGap) {
-    					maxGap = gap;
-    				}
-    				break;
-    			}
-    		}
-    		gap = 0;
-    	}
+const distributeCandies = (array) => {
+    let sortedArray = array.sort(sortedNumber);
+    let count = 1;
+    for(let i = 0; i < sortedArray.length && count < sortedArray.length/2; i++){
+        if(sortedArray[i] < sortedArray[i+1]) {
+            count++;
+        }
     }
-    return maxGap;
+    return count;
 }
 
-
-function convertToBinary(N) {
-    let bin = '';
-    while(N >= 2) {
-        bin = N % 2 + bin;
-        N = Math.floor(N / 2);
-    }
-    return N+bin;
+const sortedNumber = (a,b) => {
+    return a-b; 
 }
-console.log(convertToBinary(1610612737));
-console.log(binaryGap(1610612737));
-console.log('0000000000000000000000000000'.length);
+
+console.log(distributeCandies([1,1,2,2,3,3]));
+console.log(distributeCandies([1,1,2,3]));
