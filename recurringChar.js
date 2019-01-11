@@ -1,3 +1,4 @@
+// return the first recurring character, given a string
 const recurringChar = (str) => {
 	let checker = 0;
 	for(let i = 0; i < str.length; i++) {
