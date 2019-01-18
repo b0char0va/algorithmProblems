@@ -3,15 +3,13 @@
 // Input:  12
 // Output: 13
 const addOne = (a) => {
-	if(a === 1) {
-		return 2;
-	}
-	let i = 0
-	while(a & (1 << i) !== 0) {
-		a ^= ~(1 << i);
+	let i = 0;
+	while((a & (1 << i)) !== 0) {
+		a ^= (1 << i);
 		i++;
 	}
 	a |= (1 << i);
 	return a;
 }
-console.log(addOne(101));
+console.log(addOne(2147483646));
+
